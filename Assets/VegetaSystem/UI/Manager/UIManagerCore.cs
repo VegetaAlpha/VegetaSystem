@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace VegetaSystem.UI
 {
-    public partial class UIManagerSystem : SingletonSystem<UIManagerSystem>
+    internal partial class UIManagerCore : MonoBehaviour
     {
         public GameObject cScreen, cPopup, cNotify, cOverlap;
         private Dictionary<string, BaseScreen> screens = new Dictionary<string, BaseScreen>();

@@ -71,7 +71,7 @@ namespace VegetaSystem
         }
     }
 
-    public class LoadSceneSystem : SingletonSystem<LoadSceneSystem>
+    public class LoadSceneSystem : PersistSingleton<LoadSceneSystem>
     {
         public virtual void LoadNewScene(ConfigLoadScene config, bool force = false)
         {

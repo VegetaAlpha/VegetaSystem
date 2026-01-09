@@ -1,7 +1,7 @@
 using UnityEngine;
 using VegetaSystem.UI;
 
-public class Sample_UIManger : UIManagerSystem
+public class Sample_UIManger : UIManagerPersist
 {
     void Start()
     {

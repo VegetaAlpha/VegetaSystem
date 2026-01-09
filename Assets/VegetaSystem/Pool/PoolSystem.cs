@@ -6,7 +6,7 @@ using UnityEngine.Pool;
 namespace VegetaSystem
 {
     public struct MultiPoolForbidden { }
-    public class PoolSystem : SingletonSystem<PoolSystem>
+    public class PoolSystem : PersistSingleton<PoolSystem>
     {
         [SerializeField] protected List<SO_PoolData> _poolConfigs;
 

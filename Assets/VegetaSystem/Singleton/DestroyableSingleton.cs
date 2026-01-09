@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
 namespace VegetaSystem
 {
-
-    public class SingletonSystem<T> : MonoBehaviour where T : SingletonSystem<T>
+    public class DestroyableSingleton<T> : MonoBehaviour
+        where T : DestroyableSingleton<T>
     {
         private static T instance;
 
@@ -44,16 +43,20 @@ namespace VegetaSystem
             if (instance == null)
             {
                 instance = (T)this;
-                DontDestroyOnLoad(this);
-                return true;
-            }
-            else if (instance == this)
-            {
                 return true;
             }
 
-            Object.Destroy(this.gameObject);
+            if (instance == this)
+                return true;
+
+            Destroy(this.gameObject);
             return false;
+        }
+
+        protected virtual void OnDestroy()
+        {
+            if (instance == this)
+                instance = null;
         }
     }
 }
