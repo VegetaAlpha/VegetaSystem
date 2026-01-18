@@ -34,7 +34,7 @@ public class Sample_Menuscreen : BaseScreen
            {
                loadingNotify.UpdateProcess(value);
            },
-           delayCompleted: 1.5f,
+           delayCompleted: 0.2f,
            onAfterLoad: () =>
            {
                Sample_UIManger.Instance.HideScreen<Sample_Menuscreen>();
@@ -43,7 +43,7 @@ public class Sample_Menuscreen : BaseScreen
            }
         );
 
-        Sample_LoadSceneManager.Instance.LoadNewScene(config);
+        LoadSceneSystem.LoadNewScene(config);
     }
 
     private void OnClickSettingBtn()

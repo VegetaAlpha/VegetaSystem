@@ -71,14 +71,14 @@ namespace VegetaSystem
         }
     }
 
-    public class LoadSceneSystem : PersistSingleton<LoadSceneSystem>
+    public static class LoadSceneSystem 
     {
-        public virtual void LoadNewScene(ConfigLoadScene config, bool force = false)
+        public static void LoadNewScene(ConfigLoadScene config, bool force = false)
         {
             LoadNewSceneAsync(config, force).Forget();
         }
 
-        protected async virtual UniTask LoadNewSceneAsync(ConfigLoadScene config, bool force)
+        private static async  UniTask LoadNewSceneAsync(ConfigLoadScene config, bool force)
         {
             if (force == false && IsSceneActive(config.SceneName))
             {
@@ -86,13 +86,11 @@ namespace VegetaSystem
                 return;
             }
 
-            var token = this.GetCancellationTokenOnDestroy();
-
             config.OnBeforeLoad?.Invoke();
 
             if (config.DelayBeforeLoad > 0)
             {
-                await UniTask.Delay(TimeSpan.FromSeconds(config.DelayBeforeLoad), cancellationToken: token);
+                await UniTask.Delay(TimeSpan.FromSeconds(config.DelayBeforeLoad));
             }
 
             AsyncOperation sceneAsync = SceneManager.LoadSceneAsync(config.SceneName, config.Mode);
@@ -124,7 +122,7 @@ namespace VegetaSystem
                 displayProgress = Mathf.MoveTowards(displayProgress, target, Time.deltaTime * fakeSpeed);
 
                 config.OnProgress?.Invoke(displayProgress);
-                await UniTask.Yield(token);
+                await UniTask.Yield();
             }
 
             // After real progress done
@@ -132,7 +130,7 @@ namespace VegetaSystem
             {
                 displayProgress = Mathf.MoveTowards(displayProgress, 1f, Time.deltaTime * fakeSpeed);
                 config.OnProgress?.Invoke(displayProgress);
-                await UniTask.Yield(token);
+                await UniTask.Yield();
             }
 
             sceneAsync.allowSceneActivation = true;
@@ -140,16 +138,16 @@ namespace VegetaSystem
 
             if (config.DelayCompleted > 0)
             {
-                await UniTask.Delay(TimeSpan.FromSeconds(config.DelayCompleted), cancellationToken: token);
+                await UniTask.Delay(TimeSpan.FromSeconds(config.DelayCompleted));
             }
             else
             {
-                await UniTask.NextFrame(token);
+                await UniTask.NextFrame();
             }
             config.OnAfterLoad?.Invoke();
         }
 
-        protected virtual void SetSceneAdditive(string sceneName, LoadSceneMode mode)
+        private static void SetSceneAdditive(string sceneName, LoadSceneMode mode)
         {
             if (mode == LoadSceneMode.Additive)
             {
@@ -165,15 +163,13 @@ namespace VegetaSystem
             }
         }
 
-        public virtual void UnloadScene(ConfigUnloadScene config)
+        public static void UnloadScene(ConfigUnloadScene config)
         {
             UnloadSceneAsync(config).Forget();
         }
 
-        protected virtual async UniTask UnloadSceneAsync(ConfigUnloadScene config)
+        private static  async UniTask UnloadSceneAsync(ConfigUnloadScene config)
         {
-            var token = this.GetCancellationTokenOnDestroy();
-
             Scene scene = SceneManager.GetSceneByName(config.SceneName);
             if (IsSceneActive(config.SceneName) == false)
             {
@@ -195,12 +191,12 @@ namespace VegetaSystem
             await UniTask.WaitUntil(() => op.isDone);
 
             if (config.DelayAfterUnloaded > 0f)
-                await UniTask.Delay(TimeSpan.FromSeconds(config.DelayAfterUnloaded), cancellationToken: token);
+                await UniTask.Delay(TimeSpan.FromSeconds(config.DelayAfterUnloaded));
 
             config.OnAfterUnload?.Invoke();
         }
 
-        protected virtual bool IsSceneActive(string sceneName)
+        private static  bool IsSceneActive(string sceneName)
         {
             Scene scene = SceneManager.GetSceneByName(sceneName);
             return scene != null && scene.IsValid() && scene.isLoaded;

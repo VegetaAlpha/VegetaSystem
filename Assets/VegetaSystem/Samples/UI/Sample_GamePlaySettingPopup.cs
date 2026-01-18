@@ -44,6 +44,6 @@ public class Sample_GamePlaySettingPopup : BasePopup
            }
         );
 
-        Sample_LoadSceneManager.Instance.LoadNewScene(config);
+        LoadSceneSystem.LoadNewScene(config);
     }
 }
