@@ -3149,9 +3149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d231a2deabcd8b44b22bb2d29f5075c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _poolConfigs:
-  - {fileID: 11400000, guid: 9a5bfa8e1d4cd034880e0e096a835ef8, type: 2}
-  - {fileID: 11400000, guid: c308e894f7785a2448fc1058c216e7ba, type: 2}
+  _poolConfigs: {fileID: 11400000, guid: 4c9178262b2839e4c90c08e97d4a67ab, type: 2}
 --- !u!1 &1319812600
 GameObject:
   m_ObjectHideFlags: 0
