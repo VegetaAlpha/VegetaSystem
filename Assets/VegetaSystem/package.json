@@ -1,0 +1,7 @@
+{
+  "name": "com.bumbabu.vegetasystem",
+  "version": "1.0.4",
+  "dependencies": {
+    "com.cysharp.unitask": "2.5.10"
+  }
+}
