@@ -3,7 +3,7 @@ using UnityEngine;
 namespace VegetaSystem.UI
 {
     [RequireComponent(typeof(UIManagerCore))]
-    public class UIManagerPersist : PersistSingleton<UIManagerPersist>, IUIManagerWrapper
+    public class UIManagerPersist : PersistSingleton<UIManagerPersist>, IUIManager
     {
         private UIManagerCore _impl;
 
@@ -41,9 +41,6 @@ namespace VegetaSystem.UI
 
         public bool IsScreenActive<T>() where T : BaseScreen
             => Impl.IsScreenActive<T>();
-
-        public bool HasScreenActiveExcept<T>() where T : BaseScreen
-            => Impl.HasScreenActiveExcept<T>();
 #endregion
 #region  POPUP
         public T GetPopup<T>() where T : BasePopup => Impl.GetPopup<T>();
@@ -60,9 +57,6 @@ namespace VegetaSystem.UI
 
         public bool IsPopupActive<T>() where T : BasePopup
             => Impl.IsPopupActive<T>();
-        
-        public bool HasPopupActiveExcept<T>() where T : BasePopup
-            => Impl.HasPopupActiveExcept<T>();
 #endregion
 #region  NOTIFY
         public T GetNotify<T>() where T : BaseNotify => Impl.GetNotify<T>();
@@ -79,9 +73,6 @@ namespace VegetaSystem.UI
         
         public bool IsNotifyActive<T>() where T : BaseNotify
             => Impl.IsNotifyActive<T>();
-
-        public bool HasNotifyActiveExcept<T>() where T : BaseNotify
-            => Impl.HasNotifyActiveExcept<T>();    
 #endregion
 #region  OVERLAP
         public T GetOverlap<T>() where T : BaseOverlap => Impl.GetOverlap<T>();
@@ -99,9 +90,6 @@ namespace VegetaSystem.UI
 
         public bool IsOverlapActive<T>() where T : BaseOverlap
             => Impl.IsOverlapActive<T>();
-
-        public bool HasOverlapActiveExcept<T>() where T : BaseOverlap
-            => Impl.HasOverlapActiveExcept<T>(); 
 #endregion           
     }
 }

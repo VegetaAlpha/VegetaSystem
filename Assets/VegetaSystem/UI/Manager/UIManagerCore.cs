@@ -3,9 +3,10 @@ using UnityEngine;
 
 namespace VegetaSystem.UI
 {
-    internal partial class UIManagerCore : MonoBehaviour
+    internal class UIManagerCore : MonoBehaviour, IUIManager
     {
-        public GameObject cScreen, cPopup, cNotify, cOverlap;
+        [Header("Roots")]
+        public Transform  cScreen, cPopup, cNotify, cOverlap;
         private Dictionary<string, BaseScreen> screens = new Dictionary<string, BaseScreen>();
         private Dictionary<string, BasePopup> popups = new Dictionary<string, BasePopup>();
         private Dictionary<string, BaseNotify> notifies = new Dictionary<string, BaseNotify>();
@@ -90,7 +91,7 @@ namespace VegetaSystem.UI
             string screenName = typeof(T).Name;
             if (screens.TryGetValue(screenName, out BaseScreen screen))
             {
-                if (screen.IsAcitve)
+                if (screen.IsActive)
                 {
                     screen.Hide();
                 }
@@ -115,6 +116,12 @@ namespace VegetaSystem.UI
             return typedScreen;
         }
 
+        /// <summary>
+        /// forceShowData: 
+        /// forces the Show(data) method to be called even if the screen is already active/visible.
+        /// Useful for refreshing or updating the UI with new data without hiding and re-showing the screen.
+        /// </summary>
+        /// <returns></returns>
         public T ShowScreen<T>(object data = null, bool forceShowData = false) where T : BaseScreen
         {
             string screenName = typeof(T).Name;
@@ -176,26 +183,8 @@ namespace VegetaSystem.UI
             string screenName = typeof(T).Name;
             if (screens.TryGetValue(screenName, out BaseScreen screen))
             {
-                return screen.IsAcitve;
+                return screen.IsActive;
             }
-            return false;
-        }
-
-        public bool HasScreenActiveExcept<T>() where T : BaseScreen
-        {
-            BaseScreen screenScr = null;
-
-            foreach (KeyValuePair<string, BaseScreen> item in screens)
-            {
-                screenScr = item.Value;
-
-
-                if (screenScr == null || screenScr is T || screenScr.IsHide)
-                    continue;
-
-                return true;
-            }
-
             return false;
         }
 
@@ -259,7 +248,7 @@ namespace VegetaSystem.UI
             string popupName = typeof(T).Name;
             if (popups.TryGetValue(popupName, out BasePopup popup))
             {
-                if (popup.IsAcitve)
+                if (popup.IsActive)
                 {
                     popup.Hide();
                 }
@@ -345,28 +334,11 @@ namespace VegetaSystem.UI
             string popupName = typeof(T).Name;
             if (popups.TryGetValue(popupName, out BasePopup popup))
             {
-                return popup.IsAcitve;
+                return popup.IsActive;
             }
             return false;
         }
 
-        public bool HasPopupActiveExcept<T>() where T : BasePopup
-        {
-            BasePopup popupSrc = null;
-
-            foreach (KeyValuePair<string, BasePopup> item in popups)
-            {
-                popupSrc = item.Value;
-
-
-                if (popupSrc == null || popupSrc is T || popupSrc.IsHide)
-                    continue;
-
-                return true;
-            }
-
-            return false;
-        }
         #endregion
 
         #region Notify
@@ -427,7 +399,7 @@ namespace VegetaSystem.UI
             string notifyName = typeof(T).Name;
             if (notifies.TryGetValue(notifyName, out BaseNotify notify))
             {
-                if (notify.IsAcitve)
+                if (notify.IsActive)
                 {
                     notify.Hide();
                 }
@@ -513,28 +485,11 @@ namespace VegetaSystem.UI
             string notifyName = typeof(T).Name;
             if (notifies.TryGetValue(notifyName, out BaseNotify notify))
             {
-                return notify.IsAcitve;
+                return notify.IsActive;
             }
             return false;
         }
 
-        public bool HasNotifyActiveExcept<T>() where T : BaseNotify
-        {
-            BaseNotify notifySrc = null;
-
-            foreach (KeyValuePair<string, BaseNotify> item in notifies)
-            {
-                notifySrc = item.Value;
-
-
-                if (notifySrc == null || notifySrc is T || notifySrc.IsHide)
-                    continue;
-
-                return true;
-            }
-
-            return false;
-        }
         #endregion
 
         #region Overlap
@@ -595,7 +550,7 @@ namespace VegetaSystem.UI
             string overlapName = typeof(T).Name;
             if (overlaps.TryGetValue(overlapName, out BaseOverlap overlap))
             {
-                if (overlap.IsAcitve)
+                if (overlap.IsActive)
                 {
                     overlap.Hide();
                 }
@@ -681,26 +636,8 @@ namespace VegetaSystem.UI
             string overlapName = typeof(T).Name;
             if (overlaps.TryGetValue(overlapName, out BaseOverlap overlap))
             {
-                return overlap.IsAcitve;
+                return overlap.IsActive;
             }
-            return false;
-        }
-
-        public bool HasOverlapActiveExcept<T>() where T : BaseOverlap
-        {
-            BaseOverlap overlapSrc = null;
-
-            foreach (KeyValuePair<string, BaseOverlap> item in overlaps)
-            {
-                overlapSrc = item.Value;
-
-
-                if (overlapSrc == null || overlapSrc is T || overlapSrc.IsHide)
-                    continue;
-
-                return true;
-            }
-
             return false;
         }
         #endregion

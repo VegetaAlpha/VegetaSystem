@@ -1,6 +1,6 @@
 namespace VegetaSystem.UI
 {
-    public interface IUIManagerWrapper
+    public interface IUIManager
     {
         // ===== Screen =====
         T GetScreen<T>() where T : BaseScreen;
@@ -8,7 +8,6 @@ namespace VegetaSystem.UI
         void HideScreen<T>() where T : BaseScreen;
         void HideAllScreens();
         bool IsScreenActive<T>() where T : BaseScreen;
-        bool HasScreenActiveExcept<T>() where T : BaseScreen;
 
 
         // ===== Popup =====
@@ -17,7 +16,6 @@ namespace VegetaSystem.UI
         void HidePopup<T>() where T : BasePopup;
         void HideAllPopups();
         bool IsPopupActive<T>() where T : BasePopup;
-        bool HasPopupActiveExcept<T>() where T : BasePopup;
 
 
         // ===== Notify =====
@@ -26,7 +24,6 @@ namespace VegetaSystem.UI
         void HideNotify<T>() where T : BaseNotify;
         void HideAllNotifies();
         bool IsNotifyActive<T>() where T : BaseNotify;
-        bool HasNotifyActiveExcept<T>() where T : BaseNotify;
 
 
         // ===== Overlap =====
@@ -35,7 +32,5 @@ namespace VegetaSystem.UI
         void HideOverlap<T>() where T : BaseOverlap;
         void HideAllOverlaps();
         bool IsOverlapActive<T>() where T : BaseOverlap;
-        bool HasOverlapActiveExcept<T>() where T : BaseOverlap;
-
     }
 }

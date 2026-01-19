@@ -10,9 +10,8 @@ namespace VegetaSystem.UI
         protected bool isHide;
         private bool isInited;
 
-        public bool IsAcitve { get => !isHide; }
+        public bool IsActive { get => !isHide; }
         public bool IsHide { get => isHide; }
-        public CanvasGroup CanvasGroup { get => canvasGroup; }
         public bool IsInited { get => isInited; }
         public UIType UIType { get => uiType; }
 
@@ -49,10 +48,10 @@ namespace VegetaSystem.UI
 
         private void SetActiveGroupCanvas(bool isAct)
         {
-            if (CanvasGroup != null)
+            if (canvasGroup != null)
             {
-                CanvasGroup.blocksRaycasts = isAct;
-                CanvasGroup.alpha = isAct ? 1 : 0;
+                canvasGroup.blocksRaycasts = isAct;
+                canvasGroup.alpha = isAct ? 1 : 0;
             }
         }
 
