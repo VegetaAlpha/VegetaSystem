@@ -5353,10 +5353,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aac51559cb43474181bbbb0693d1615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: VegetaSystem::VegetaSystem.UI.UIManagerCore
-  cScreen: {fileID: 5451850061376954791}
-  cPopup: {fileID: 5767841459394047928}
-  cNotify: {fileID: 4397361326698609243}
-  cOverlap: {fileID: 2858183348517314408}
+  cScreen: {fileID: 6513113768192536510}
+  cPopup: {fileID: 3718200826816530713}
+  cNotify: {fileID: 7460349221598302982}
+  cOverlap: {fileID: 1736784835483845253}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
