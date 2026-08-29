@@ -9,14 +9,22 @@ projects.
 
 ## Installation
 
-In Unity's Package Manager, choose **Add package from git URL** and use:
+This package requires [UniTask](https://github.com/Cysharp/UniTask). Unity's Package Manager does
+not support git-URL dependencies being auto-resolved from *inside* another package's own
+`package.json` (only plain project manifests can reference a git URL directly), so it has to be
+added as its own step:
 
-```
-https://github.com/VegetaAlpha/VegetaSystem.git?path=VegetaSystemPackage
-```
+1. In Unity's Package Manager, choose **Add package from git URL** and add UniTask first:
 
-Dependencies (currently [UniTask](https://github.com/Cysharp/UniTask)) are resolved automatically —
-no extra setup required.
+    ```
+    https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask
+    ```
+
+2. Then add VegetaSystem the same way:
+
+    ```
+    https://github.com/VegetaAlpha/VegetaSystem.git?path=VegetaSystemPackage
+    ```
 
 ## Requirements
 
