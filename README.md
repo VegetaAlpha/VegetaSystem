@@ -41,7 +41,9 @@ the same `Pool/` folder and conflict. Pick one or the other.
 
 ## Requirements
 
-- Unity 6000.2 or newer
+- Unity 6000.2 or newer for the full package (`Singleton/` uses `FindFirstObjectByType`,
+  introduced in Unity 2023.1)
+- Unity 2022.3 or newer for the standalone Pool package — it doesn't touch that API
 
 ## Modules
 
