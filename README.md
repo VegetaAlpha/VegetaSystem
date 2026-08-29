@@ -26,6 +26,19 @@ added as its own step:
     https://github.com/VegetaAlpha/VegetaSystem.git?path=VegetaSystemPackage
     ```
 
+### Only need the pool?
+
+Object pooling has no dependency on UniTask or on any other module in this repo — it can be
+installed on its own, without step 1 above and without pulling in the UI manager or scene loading
+helpers:
+
+```
+https://github.com/VegetaAlpha/VegetaSystem.git?path=VegetaSystemPackage/Pool
+```
+
+Don't install this at the same time as the full `VegetaSystemPackage` path above — both would claim
+the same `Pool/` folder and conflict. Pick one or the other.
+
 ## Requirements
 
 - Unity 6000.2 or newer
@@ -44,7 +57,8 @@ Both expose a static `Instance` (lazily found via `FindFirstObjectByType`) and `
 ### Object Pooling
 
 `PoolSystem` is a plain C# singleton (`PoolSystem.Instance`) — there is nothing to drag into a
-scene.
+scene. This module has no dependencies and can be installed on its own — see
+["Only need the pool?"](#only-need-the-pool) above.
 
 1. Create pool config assets: **Create → Pool → PoolData** for each prefab (or group of variant
    prefabs), then **Create → Pool → AllPoolData** to collect them into one list.
@@ -136,4 +150,5 @@ default behavior refuses and logs an error instead).
 ## Samples
 
 A working demo of the pooling system and UI manager together is available via **Package Manager →
-VegetaSystem → Samples → Import**.
+VegetaSystem → Samples → Import** (only available on the full `VegetaSystemPackage` install, not
+the standalone Pool-only one).

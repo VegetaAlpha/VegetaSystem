@@ -1,12 +1,8 @@
 {
-    "name": "VegetaSystem.Pool.Editor",
+    "name": "VegetaSystem.Pool",
     "rootNamespace": "",
-    "references": [
-        "VegetaSystem.Pool"
-    ],
-    "includePlatforms": [
-        "Editor"
-    ],
+    "references": [],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
