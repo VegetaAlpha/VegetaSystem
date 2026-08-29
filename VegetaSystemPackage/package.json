@@ -13,9 +13,6 @@
     "author": {
         "name": "VegetaAlpha"
     },
-    "dependencies": {
-        "com.cysharp.unitask": "2.5.10"
-    },
     "samples": [
         {
             "displayName": "Pool & UI Samples",
