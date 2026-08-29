@@ -1,11 +1,15 @@
+using System;
 using UnityEngine;
 
 namespace VegetaSystem
 {
     public abstract class ObjPoolable : MonoBehaviour
     {
-        private string keyPool;
+        private string keyTypeName;
+        private string keySubKey;
         private bool isRelease;
+
+        internal Action<ObjPoolable> OnDestroyedExternally;
 
         public virtual void Init()
         {
@@ -18,16 +22,22 @@ namespace VegetaSystem
 
 
         #region  Internal
-        internal void In_Init(string key)
+        internal void In_Init(string typeName, string subKey)
         {
-            this.keyPool = key;
+            this.keyTypeName = typeName;
+            this.keySubKey = subKey;
             this.isRelease = true;
             Init();
         }
 
-        internal string In_GetKeyPool()
+        internal string In_GetKeyTypeName()
         {
-            return keyPool;
+            return keyTypeName;
+        }
+
+        internal string In_GetSubKeyPool()
+        {
+            return keySubKey;
         }
 
         internal void In_Get()
@@ -48,5 +58,14 @@ namespace VegetaSystem
         }
 
         #endregion
+
+        /// <summary>
+        /// Notifies the owning pool so it can drop this instance from its bookkeeping
+        /// when the object is destroyed directly instead of going through PoolSystem.ReleaseObj.
+        /// </summary>
+        protected virtual void OnDestroy()
+        {
+            OnDestroyedExternally?.Invoke(this);
+        }
     }
 }

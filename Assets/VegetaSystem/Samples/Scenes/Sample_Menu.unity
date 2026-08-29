@@ -3116,7 +3116,7 @@ GameObject:
   - component: {fileID: 1297933380}
   - component: {fileID: 1297933381}
   m_Layer: 0
-  m_Name: Sample_Pool
+  m_Name: Sample_GameController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3146,10 +3146,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1297933378}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d231a2deabcd8b44b22bb2d29f5075c, type: 3}
+  m_Script: {fileID: 11500000, guid: 8bd513800de4c024ab7519a9ac55cc98, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  _poolConfigs: {fileID: 11400000, guid: 4c9178262b2839e4c90c08e97d4a67ab, type: 2}
+  m_EditorClassIdentifier: VegetaSystem::Sample_GameController
+  poolConfig: {fileID: 11400000, guid: 4c9178262b2839e4c90c08e97d4a67ab, type: 2}
 --- !u!1 &1319812600
 GameObject:
   m_ObjectHideFlags: 0

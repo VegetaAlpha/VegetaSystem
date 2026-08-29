@@ -1,0 +1,18 @@
+{
+    "name": "VegetaSystem.Pool.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:cfb003ff13af6374aaac0ffbed21c9aa"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
