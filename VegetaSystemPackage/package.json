@@ -1,0 +1,26 @@
+{
+    "name": "com.vegetaalpha.vegetasystem",
+    "displayName": "VegetaSystem",
+    "version": "1.0.5",
+    "unity": "6000.2",
+    "description": "Reusable Unity gameplay framework: object pooling, a layered UI manager (Screen/Popup/Notify/Overlap), scene loading helpers, and generic singleton bases.",
+    "keywords": [
+        "pooling",
+        "ui",
+        "singleton",
+        "framework"
+    ],
+    "author": {
+        "name": "VegetaAlpha"
+    },
+    "dependencies": {
+        "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask"
+    },
+    "samples": [
+        {
+            "displayName": "Pool & UI Samples",
+            "description": "Demo scenes and scripts showing PoolSystem and the UI manager in action.",
+            "path": "Samples~"
+        }
+    ]
+}
